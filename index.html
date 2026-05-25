@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A tiny static flag guessing board for two players. No backend, no accounts, just a shared seed." />
+  <title>Flag Guess Board</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">2-player voice-call board</p>
+        <h1>Flag Guess Board</h1>
+        <p class="subtitle">Enter the same seed, get the same 24 flags, and eliminate countries manually.</p>
+      </div>
+    </header>
+
+    <section class="panel controls-panel" aria-label="Game controls">
+      <label class="seed-label" for="seedInput">Seed</label>
+      <div class="seed-row">
+        <input id="seedInput" type="text" autocomplete="off" spellcheck="false" placeholder="for example: moon77" />
+        <button id="startButton" type="button">Start</button>
+        <button id="randomSeedButton" type="button" class="secondary">Random</button>
+      </div>
+      <div class="utility-row">
+        <button id="copySeedButton" type="button" class="ghost">Copy seed</button>
+        <label class="toggle-label">
+          <input id="showNamesToggle" type="checkbox" />
+          Show names
+        </label>
+      </div>
+    </section>
+
+    <section class="panel selected-panel" aria-live="polite">
+      <div>
+        <p class="section-label">Your secret country</p>
+        <div id="selectedCountry" class="selected-empty">No country selected yet</div>
+      </div>
+      <button id="clearSelectedButton" type="button" class="ghost">Clear</button>
+    </section>
+
+    <section class="grid-card">
+      <div id="countryGrid" class="country-grid" aria-label="Country flags grid"></div>
+    </section>
+
+    <section class="hint-panel" aria-label="How to play">
+      <p><strong>Click</strong> a flag to remove / restore it. <strong>Star</strong>, <strong>double-click</strong>, or <strong>right-click</strong> to mark your secret country. Hover shows the country name.</p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
