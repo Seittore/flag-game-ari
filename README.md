@@ -2,7 +2,6 @@
 
 A tiny static web board for a two-player voice-call flag guessing game.
 
-No backend. No accounts. No database. No build step. Just open `index.html` or deploy the folder to GitHub Pages.
 
 ## How to play
 
