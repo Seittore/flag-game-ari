@@ -200,6 +200,7 @@ const COUNTRIES = [
 ];
 
 const seedInput = document.querySelector("#seedInput");
+const specialMessage = document.querySelector("#specialMessage");
 const startButton = document.querySelector("#startButton");
 const randomSeedButton = document.querySelector("#randomSeedButton");
 const copySeedButton = document.querySelector("#copySeedButton");
@@ -414,10 +415,28 @@ function renderGrid() {
   renderSelected();
 }
 
+function isAriSeed(seed) {
+  const normalized = seed.trim().toLowerCase();
+
+  return [
+    "21062006",
+    "ari",
+    "ари",
+    "210606",
+    "21.06.06",
+    "21/06/06",
+    "21-06-06",
+    "аружан",
+    "aruzhan",
+    "arujan"
+  ].includes(normalized);
+}
+
 function startGame(seed) {
   const cleanSeed = seed.trim() || makeRandomSeed();
   currentSeed = cleanSeed;
   seedInput.value = cleanSeed;
+  updateSpecialMessage(cleanSeed);
 
   currentCountries = seededShuffle(COUNTRIES, cleanSeed).slice(0, GRID_SIZE);
   restoreState(cleanSeed);
@@ -436,6 +455,22 @@ function showToast(message) {
     window.setTimeout(() => toast.remove(), 160);
   }, 1500);
 }
+
+function updateSpecialMessage(seed) {
+  if (!isAriSeed(seed)) {
+    specialMessage.classList.add("hidden");
+    specialMessage.innerHTML = "";
+    return;
+  }
+
+  specialMessage.classList.remove("hidden");
+
+  specialMessage.innerHTML = `
+    💛 <strong>Special mode unlocked</strong><br>
+    Something cute and familiar detected
+  `;
+}
+
 
 startButton.addEventListener("click", () => startGame(seedInput.value));
 

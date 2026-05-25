@@ -376,3 +376,36 @@ body.show-names .country-name {
     width: 58px;
   }
 }
+
+.special-message {
+  margin-top: 18px;
+  padding: 16px 20px;
+  border-radius: 20px;
+
+  background: rgba(255, 210, 90, 0.12);
+  border: 1px solid rgba(255, 210, 90, 0.25);
+
+  color: #ffd56a;
+  font-size: 18px;
+  text-align: center;
+
+  backdrop-filter: blur(10px);
+
+  animation: fadeIn 0.45s ease;
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
